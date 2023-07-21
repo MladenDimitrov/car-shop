@@ -73,14 +73,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'car_shop.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": "car_shop",
+#     }
+# }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+ 'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'car_shop', # database name
+    'USER': 'razboinik', # postgres user
+    'PASSWORD': 'randomparola', # postgres password
+    'HOST': '127.0.0.1', # postgres host
+    'PORT': '5432', # postgres port
+ }
 }
 
 

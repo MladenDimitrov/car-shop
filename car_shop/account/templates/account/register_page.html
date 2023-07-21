@@ -8,7 +8,12 @@
     <title>Car Shop</title>
 </head>
 <body>
-    <p>hello</p>
-    <a href="{% url 'register_page' %}">register page</a>
+    <p>register page</p>
+    <a href="{% url 'home_page' %}">home page</a>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">create profile</button>
+    </form>
 </body>
 </html>
