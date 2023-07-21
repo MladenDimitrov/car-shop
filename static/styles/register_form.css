@@ -1,0 +1,16 @@
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 30px;
+}
+.password, .username, .email{
+    width: 200px;
+    height: 35px;
+    border: gray 3px solid;
+    border-radius: 6px;
+}
+.try{
+    color: red;
+}

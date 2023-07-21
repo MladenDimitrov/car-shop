@@ -5,15 +5,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/styles/register_form.css"/>
     <title>Car Shop</title>
 </head>
 <body>
     <p>register page</p>
     <a href="{% url 'home_page' %}">home page</a>
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">create profile</button>
-    </form>
+
+    <main>
+    <section id="register">
+        <div class="form">
+            <h2 class="try">Create Profile</h2>
+            <form class='register-form'  method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">create profile</button>
+            </form>
+        </div>
+    </section>
+    </main>
 </body>
 </html>
