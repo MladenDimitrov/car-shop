@@ -1,9 +1,18 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 .form{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     font-size: 30px;
+    background: lightskyblue;
+    border-radius: 6px;
+    width: 500px;
 }
 .password, .username, .email{
     width: 200px;
@@ -13,4 +22,22 @@
 }
 .try{
     color: red;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.submit-btn{
+    width: 150px;
+    height: 35px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.page-footer{
+    position: fixed;
+    bottom: 0;
 }

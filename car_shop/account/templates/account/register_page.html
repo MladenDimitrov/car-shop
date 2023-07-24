@@ -9,20 +9,21 @@
     <title>Car Shop</title>
 </head>
 <body>
+<nav><a href="{% url 'home_page' %}">home page</a></nav>
     <p>register page</p>
-    <a href="{% url 'home_page' %}">home page</a>
 
-    <main>
-    <section id="register">
         <div class="form">
-            <h2 class="try">Create Profile</h2>
+            <h2>Register</h2>
             <form class='register-form'  method="post">
                 {% csrf_token %}
+
                 {{ form.as_p }}
-                <button type="submit">create profile</button>
+                <button class="submit-btn" type="submit">Create Profile</button>
             </form>
         </div>
-    </section>
-    </main>
+
+    <footer class="page-footer">
+        <p>@Car Shop - MLD Technologies 2023. All rights reserved.</p>
+    </footer>
 </body>
 </html>
