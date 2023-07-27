@@ -6,7 +6,7 @@ from django.db import models
 
 
 class TelephoneNumber(models.Model):
-    telephone_number = models.IntegerField(max_length=10)
+    telephone_number = models.IntegerField()
     # Description is optional, only for the staff to know more about the number.
     # It can be used in the template if needed.
     description = models.CharField(max_length=20, blank=True, null=True)
