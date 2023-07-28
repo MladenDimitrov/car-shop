@@ -9,5 +9,10 @@
 </head>
 <body>
     <p>you are in your profile page</p>
+    {{ request.user }}
+    {{ form.user }}
+    <a href="{% url 'login_page' %}">Login</a>
+    <a href="{% url 'logout_page' %}">Logout</a>
+
 </body>
 </html>

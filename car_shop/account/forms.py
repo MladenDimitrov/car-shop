@@ -1,6 +1,7 @@
 from django import forms
 # from car_shop.account.models import Person
 from django.contrib.auth import forms as auth_forms, get_user_model, password_validation
+from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 #
 # class RegisterForm(forms.ModelForm):
@@ -49,7 +50,7 @@ from django.utils.translation import gettext_lazy as _
 #             )
 #         }
 from django.contrib.auth import get_user_model
-
+from car_shop.common.models import Person
 UserModel = get_user_model()
 
 
@@ -77,3 +78,9 @@ class RegisterUserForm(auth_forms.UserCreationForm):
                 }
             ),
         }
+
+
+class ProfileDetails(forms.ModelForm):
+    class Meta:
+        model = Person
+        fields = '__all__'

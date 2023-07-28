@@ -37,14 +37,15 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth import views as auth_views, login, authenticate, get_user_model
 from django.contrib.auth import mixins as auth_mixins
-from car_shop.account.forms import RegisterUserForm
+from car_shop.account.forms import RegisterUserForm, ProfileDetails
 from django.urls import reverse_lazy
 from django.views import generic as views
-
+from car_shop.account.models import AppUser
 
 class RegisterUserView(views.CreateView):
     template_name = 'account/register_page.html'
     form_class = RegisterUserForm
+    success_url = reverse_lazy('login_page')
 
 
 class LoginUserView(auth_views.LoginView):
@@ -53,6 +54,27 @@ class LoginUserView(auth_views.LoginView):
 
 class LogoutUserView(auth_views.LogoutView):
     pass
+
+
+def profile_page(request):
+    form = ProfileDetails()
+    if request.user.is_authenticated:
+        auth_username = request.user
+        current_user = AppUser.objects.get(username=auth_username)
+        print(current_user.is_staff)
+    if request.method == 'POST':
+        form = ProfileDetails(request.POST)
+        if form.is_valid():
+            form.save()
+
+    return render(request, template_name='account/profile_page.html')
+
+
+# class ProfileUserView(auth_mixins.LoginRequiredMixin, views.FormView):
+#     template_name = 'account/profile_page.html'
+#     form_class = ProfileDetails
+
+
 
 
 # @login_required

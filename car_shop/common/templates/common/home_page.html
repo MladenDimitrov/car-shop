@@ -11,13 +11,16 @@
 <body>
 <nav class="navigation">
     <a href="{% url 'register_page' %}">Register Page</a>
-{#    <a href="{% url 'profile_page' %}">Profile</a>#}
-    <a href="{% url 'register_page' %}">Products</a>
+    <a href="{% url 'login_page' %}">Login</a>
+    <a href="{% url 'profile_page' %}">Profile</a>
 </nav>
 <p>hello</p>
 <a href="{% url 'register_page' %}">register page</a>
 {{ name.profile_photo }}
 
 <img src="{{ name.profile_photo.url }}" alt="" width="300px" height="300px">
+
+<p>{{ request.user }}</p>
+<a href="{% url 'logout_page' %}">Logout</a>
 </body>
 </html>

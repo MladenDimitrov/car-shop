@@ -3,18 +3,8 @@ from car_shop.account.validators import check_name
 from django.core.validators import MinLengthValidator
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import models as auth_models
-
+from django.contrib.auth import get_user_model
 # # Create your models here.
-
-
-class Person(models.Model):
-    name = models.CharField(max_length=20, blank=True, null=True, validators=[check_name, MinLengthValidator(2)])
-    last_name = models.CharField(max_length=50, blank=True, null=True, validators=[check_name, MinLengthValidator(1)])
-
-    email = models.EmailField(max_length=40)
-    profile_photo = models.ImageField(blank=True, null=True, upload_to='images')
-    phone_number = models.IntegerField(blank=True, null=True)
-    address = models.CharField(max_length=100, blank=True, null=True)
 
 
 class AppUserManager(auth_models.BaseUserManager):
@@ -45,12 +35,9 @@ class AppUserManager(auth_models.BaseUserManager):
 
         return self._create_user(username, email, password, **extra_fields)
 
-    def get_by_natural_key(self, username):
-        return self.get(**{self.model.USERNAME_FIELD: username})
-
 
 class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     USERNAME_FIELD = 'username'
     username = models.CharField(blank=False, null=False, unique=True)
     is_staff = models.BooleanField(default=False)
-
+    objects = AppUserManager()

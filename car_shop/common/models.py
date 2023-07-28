@@ -1,4 +1,8 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
+from django.contrib.auth import get_user_model
+from car_shop.account.validators import check_name
+
 
 # Create your models here.
 
@@ -33,3 +37,17 @@ class WorkingHoursModel(models.Model):
     # In the end the user should end the sentence with " or '
     working_days = models.TextField(max_length=100)
     days_off = models.TextField(max_length=100)
+
+
+UserModel = get_user_model()
+
+
+class Person(models.Model):
+
+    name = models.CharField(max_length=20, blank=True, null=True, validators=[check_name, MinLengthValidator(2)])
+    last_name = models.CharField(max_length=50, blank=True, null=True, validators=[check_name, MinLengthValidator(1)])
+    email = models.EmailField(max_length=40, blank=True, null=True)
+    profile_photo = models.ImageField(blank=True, null=True, upload_to='images')
+    phone_number = models.IntegerField(blank=True, null=True)
+    address = models.CharField(max_length=100, blank=True, null=True)
+    user = models.OneToOneField(UserModel, on_delete=models.RESTRICT, primary_key=True)
