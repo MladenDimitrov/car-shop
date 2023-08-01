@@ -8,11 +8,17 @@
     <title>Car Shop</title>
 </head>
 <body>
-    <p>you are in your profile page</p>
-    {{ request.user }}
-    {{ form.user }}
-    <a href="{% url 'login_page' %}">Login</a>
-    <a href="{% url 'logout_page' %}">Logout</a>
-
+    <p>you are in profile page</p>
+    <p>{{ user_info.name }}</p>
+{#    {% for person in object_list %}#}
+{#        <img src="{{ person.profile_photo.url }}" alt="profile_photo" width="100px" height="100px">#}
+{#    	<p>{{ person.name|default_if_none:'Name not presented' }}</p>#}
+{#        <p>{{ person.last_name|default_if_none:'Last name not presented' }}</p>#}
+{#        <p>{{ person.address|default_if_none:'Address not presented' }}</p>#}
+{#        <p>{{ person.email|default_if_none:'Email not presented' }}</p>#}
+{#        <p>{{ person.phone_number|default_if_none:'Phone number not presented' }}</p>#}
+{#    {% endfor %}#}
+{#    <a href="{% url 'edit_profile_page' %}">Edit Profile</a>#}
+    <a href="{% url 'edit_profile' %}">Edit profile</a>
 </body>
 </html>

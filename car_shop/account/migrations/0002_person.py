@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(blank=True, max_length=20, null=True, validators=[car_shop.account.validators.check_name, django.core.validators.MinLengthValidator(2)])),
                 ('last_name', models.CharField(blank=True, max_length=50, null=True, validators=[car_shop.account.validators.check_name, django.core.validators.MinLengthValidator(1)])),
                 ('email', models.EmailField(max_length=40)),
-                ('profile_photo', models.ImageField(blank=True, null=True, upload_to='images')),
+                ('profile_photo', models.ImageField(blank=True, null=True, upload_to='profile_images')),
                 ('phone_number', models.IntegerField(blank=True, null=True)),
                 ('address', models.CharField(blank=True, max_length=100, null=True)),
             ],

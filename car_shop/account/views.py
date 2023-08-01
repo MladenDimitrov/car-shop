@@ -1,46 +1,13 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-# from car_shop.account.forms import RegisterForm, LoginForm, RegisterUserForm
-# Create your views here.
-# def profile_page(request):
-#     return render(request, template_name='account/profile_page.html')
-#
-#
-# def register_page(request):
-#     form = RegisterForm()
-#     if request.method == 'POST':
-#         form = RegisterForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect(to='login_page')
-#     context = {
-#         'form': form,
-#     }
-#     return render(request, template_name='account/register_page.html', context=context)
-#
-#
-# def login_page(request):
-#     form = LoginForm()
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#
-#     context = {
-#         'form': form
-#     }
-#     return render(request, template_name='account/login_page.html', context=context)
-#
-#
-# def edit_profile(request):
-#     return render(request, template_name='account/edit_profile_page.html')
-
-
 from django.contrib.auth import views as auth_views, login, authenticate, get_user_model
 from django.contrib.auth import mixins as auth_mixins
 from car_shop.account.forms import RegisterUserForm, ProfileDetails
 from django.urls import reverse_lazy
 from django.views import generic as views
 from car_shop.account.models import AppUser
+from car_shop.common.models import Person
+
 
 class RegisterUserView(views.CreateView):
     template_name = 'account/register_page.html'
@@ -56,39 +23,44 @@ class LogoutUserView(auth_views.LogoutView):
     pass
 
 
-def profile_page(request):
-    form = ProfileDetails()
-    if request.user.is_authenticated:
-        auth_username = request.user
-        current_user = AppUser.objects.get(username=auth_username)
-        print(current_user.is_staff)
+@login_required
+def edit_profile(request):
+    auth_username = request.user
+    print(auth_username)
+
+    try:
+        user_info = Person.objects.get(user=auth_username)
+    except:
+        form = ProfileDetails()
+        print('entered the except block')
+    else:
+        print('hello')
+        form = ProfileDetails(instance=user_info)
+
+    form.fields['user'].initial = auth_username
     if request.method == 'POST':
-        form = ProfileDetails(request.POST)
+        user_info = Person.objects.get(user=auth_username)
+        form = ProfileDetails(request.POST, request.FILES, instance=user_info)
         if form.is_valid():
             form.save()
 
-    return render(request, template_name='account/profile_page.html')
+    context = {
+        'form': form,
+    }
+    return render(request, template_name='account/edit_profile_page.html', context=context)
 
 
-# class ProfileUserView(auth_mixins.LoginRequiredMixin, views.FormView):
-#     template_name = 'account/profile_page.html'
-#     form_class = ProfileDetails
+@login_required()
+def profile_page(request):
+    auth_user = request.user
+    context = {}
+    print(auth_user)
+    try:
+        user_info = Person.objects.get(user=auth_user)
+    except:
+        return redirect(to='edit_profile')
+    else:
+        context['user_info'] = user_info
+        print('else')
 
-
-
-
-# @login_required
-# def func_view(request):
-#     pass
-
-
-# class ViewWithPermission(auth_mixins.PermissionRequiredMixin, views.TemplateView):
-#     template_name = 'app_auth/users_list.html'
-
-
-# class UsersListView(auth_mixins.LoginRequiredMixin, views.ListView):
-#     model = UserModel
-#     template_name = 'app_auth/users_list.html'
-
-#     # Login URL only for this view:
-#     # login_url = 'custom-login/url'
+    return render(request, template_name='account/profile_page.html', context=context)
