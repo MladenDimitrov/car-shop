@@ -1,0 +1,6 @@
+.products-catalog{
+    display: flex;
+}
+.item{
+    margin-right: 30px;
+}
