@@ -1,10 +1,6 @@
 from django.db import models
-from car_shop.account.validators import check_name
-from django.core.validators import MinLengthValidator
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import models as auth_models
-from django.contrib.auth import get_user_model
-# # Create your models here.
 
 
 class AppUserManager(auth_models.BaseUserManager):

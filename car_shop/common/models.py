@@ -35,6 +35,8 @@ class WorkingHoursModel(models.Model):
     # First start with " or ' after that write the starting hour then spase and the end hour.
     # After the hours are correctly writen the user can write the starting day and the end day with space between.
     # In the end the user should end the sentence with " or '
+    # Example working days '9 17:30 Monday Friday'
+    # Example days off 'Saturday Sunday' or 'Monday Thursday'
     working_days = models.TextField(max_length=100)
     days_off = models.TextField(max_length=100)
 
@@ -51,3 +53,40 @@ class Person(models.Model):
     phone_number = PhoneNumberField(max_length=13, region='BG')
     address = models.CharField(max_length=100, blank=True, null=True)
     user = models.OneToOneField(UserModel, on_delete=models.RESTRICT, primary_key=True)
+
+
+class ShoppingCart(models.Model):
+    image_of_the_product = models.ImageField(upload_to='ordered_products_images')
+    type_of_product = models.CharField(max_length=30)
+    manufacturer = models.CharField(max_length=30)
+    batch_number = models.CharField(max_length=30)
+    confirm_purchase_of_product = models.BooleanField(default=False)
+    price = models.IntegerField()
+    buyer = models.OneToOneField(UserModel, on_delete=models.RESTRICT, primary_key=True)
+
+
+class Order(models.Model):
+    PENDING = 'PN'
+    PROCESSING_ORDER = 'PR'
+    PENDING_TRACKING_EVENT = 'PT'
+    TRACKING_INFO_RECEIVED = 'TR'
+    IN_TRANSIT = 'IT'
+    OUT_FOR_DELIVERY = 'OD'
+    DELIVERED = 'DE'
+    ORDER_STATUS_CHOICES = [
+        (PENDING, 'Pending'),
+        (PROCESSING_ORDER, 'Processing order'),
+        (PENDING_TRACKING_EVENT, 'Pending tracking event'),
+        (TRACKING_INFO_RECEIVED, 'Tracking Info Received'),
+        (IN_TRANSIT, 'In transit'),
+        (OUT_FOR_DELIVERY, 'Out for delivery'),
+        (DELIVERED, 'Delivered')
+    ]
+    products = models.ForeignKey(ShoppingCart, on_delete=models.CASCADE)
+    customer = models.OneToOneField(UserModel, on_delete=models.CASCADE)
+    status = models.CharField(choices=ORDER_STATUS_CHOICES, default=PENDING)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    address = models.CharField(max_length=70)
+    phone_number = PhoneNumberField(max_length=13, region='BG')
+    total_price = models.IntegerField()
