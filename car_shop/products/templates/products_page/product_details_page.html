@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Car Shop</title>
+</head>
+<body>
+<div>
+    <p>{{ product_details.for_car }}</p>
+<p>{{ product_details.specifications }}</p>
+    <p>{{ product_details.price }}</p>
+</div>
+<div>
+    <form enctype="multipart/form-data" method="post">
+        {{ form.errors }}
+        {{ form.non_field_errors }}
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Add Item</button>
+    </form>
+</div>
+</body>
+</html>

@@ -84,10 +84,3 @@ class ProfileDetails(forms.ModelForm):
     class Meta:
         model = Person
         fields = '__all__'
-        widgets = {
-            'user': forms.CheckboxInput(
-                attrs={
-                    'class': 'auth-user'
-                }
-            )
-        }

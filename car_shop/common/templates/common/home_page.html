@@ -16,10 +16,10 @@
 </nav>
 <p>hello</p>
 <a href="{% url 'register_page' %}">register page</a>
-{{ name.profile_photo }}
+{#{{ name.profile_photo }}#}
 
-<img src="{{ name.profile_photo.url }}" alt="" width="300px" height="300px">
-
+{#<img src="{{ name.profile_photo.url }}" alt="" width="300px" height="300px">#}
+{#<p>{{name.user}}</p>#}
 <p>{{ request.user }}</p>
 <a href="{% url 'logout_page' %}">Logout</a>
 </body>

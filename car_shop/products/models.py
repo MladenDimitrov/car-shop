@@ -40,7 +40,14 @@ class Products(models.Model):
     # Example
     # Diameter: 120mm
     # Operating current: 12V and so on ...
-    specifications = models.CharField(max_length=500)
+    specifications = models.TextField(max_length=500)
     category_of_product = models.CharField(choices=CATEGORY_OF_PRODUCT)
     type_of_product = models.CharField(choices=TYPE_OF_PRODUCT)
     price = models.IntegerField()
+
+
+class TestModel(models.Model):
+    name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    age = models.IntegerField()
+

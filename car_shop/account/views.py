@@ -27,22 +27,44 @@ class LogoutUserView(auth_views.LogoutView):
 def edit_profile(request):
     auth_username = request.user
     print(auth_username)
-
+    check_for_personal_info = True
     try:
         user_info = Person.objects.get(user=auth_username)
     except:
         form = ProfileDetails()
+        check_for_personal_info = False
         print('entered the except block')
+
     else:
         print('hello')
         form = ProfileDetails(instance=user_info)
 
     form.fields['user'].initial = auth_username
     if request.method == 'POST':
-        user_info = Person.objects.get(user=auth_username)
-        form = ProfileDetails(request.POST, request.FILES, instance=user_info)
-        if form.is_valid():
-            form.save()
+        if check_for_personal_info:
+            print('first')
+            print(check_for_personal_info)
+            user_info = Person.objects.get(user=auth_username)
+            form = ProfileDetails(request.POST, request.FILES, instance=user_info)
+            if form.is_valid():
+                print(form.is_valid())
+                print('final')
+                print(check_for_personal_info)
+                form.save()
+                print(form.save)
+        else:
+            print('second')
+            print(check_for_personal_info)
+            form = ProfileDetails(request.POST, request.FILES)
+            # print(form)
+            # print(form.save())
+            print(form.is_valid())
+            if form.is_valid():
+                print(form.is_valid())
+                print('final')
+                print(check_for_personal_info)
+                form.save()
+                print(form.save)
 
     context = {
         'form': form,

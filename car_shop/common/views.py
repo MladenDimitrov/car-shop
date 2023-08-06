@@ -1,16 +1,17 @@
 from django.shortcuts import render
-# from car_shop.account.models import Person
+from car_shop.common.models import Person
 
 
 # Create your views here.
 
 
 def home_page(request):
-    # name = Person.objects.first()
-
+    # user = request.user
+    # name = Person.objects.get(user=user)
     # context = {
     #     'name': name
     # }
+
     return render(request, template_name='common/home_page.html')
 
 
