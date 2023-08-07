@@ -15,7 +15,7 @@
         <div class="item">
         {% if part.image_of_the_product %}
             <a href="{% url 'product_details' part.pk %}">
-        	<img src="{{ part.image_of_the_product.url }}"  height="150px" width="150px" alt="drivetrain">
+        	<img src="{{ part.image_of_the_product.url }}"  height="150px" width="150px" alt="car part">
             </a>
             {% else %}
             <a href="{% url 'product_details' part.pk %}">

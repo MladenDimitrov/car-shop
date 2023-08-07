@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from car_shop.account.validators import check_name
 from phonenumber_field.modelfields import PhoneNumberField
-
+from car_shop.products.models import Products
 # Create your models here.
 
 # These models are only visible for the staff.
@@ -56,13 +56,10 @@ class Person(models.Model):
 
 
 class ShoppingCart(models.Model):
-    image_of_the_product = models.ImageField(upload_to='ordered_products_images')
-    type_of_product = models.CharField(max_length=30)
-    manufacturer = models.CharField(max_length=30)
-    batch_number = models.CharField(max_length=30)
+    buyer = models.ForeignKey(UserModel, on_delete=models.RESTRICT)
+    product = models.ForeignKey(Products, on_delete=models.RESTRICT)
     confirm_purchase_of_product = models.BooleanField(default=False)
     price = models.IntegerField()
-    buyer = models.OneToOneField(UserModel, on_delete=models.RESTRICT, primary_key=True)
 
 
 class Order(models.Model):
@@ -82,8 +79,8 @@ class Order(models.Model):
         (OUT_FOR_DELIVERY, 'Out for delivery'),
         (DELIVERED, 'Delivered')
     ]
-    products = models.ForeignKey(ShoppingCart, on_delete=models.CASCADE)
-    customer = models.OneToOneField(UserModel, on_delete=models.CASCADE)
+    products = models.ManyToManyField(ShoppingCart)
+    customer = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     status = models.CharField(choices=ORDER_STATUS_CHOICES, default=PENDING)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)

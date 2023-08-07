@@ -22,17 +22,12 @@ def product_details(request, **kwargs):
 
     form = AddProduct(instance=more_info)
     form.fields['buyer'].initial = user
+    form.fields['product'].initial = more_info
     if request.method == 'POST':
-        print('check')
-        form = AddProduct(request.POST, request.FILES, instance=more_info)
-        # print(form)
-        # form = AddProduct(request.POST, request.FILES)
+        form = AddProduct(request.POST)
         if form.is_valid():
-            print(form.is_valid())
-            print('checksave')
             form.save()
-            print('checkseved')
-            print(form.save)
+
     context = {
         'product_details': more_info,
         'form': form
