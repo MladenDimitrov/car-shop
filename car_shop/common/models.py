@@ -4,9 +4,6 @@ from django.contrib.auth import get_user_model
 from car_shop.account.validators import check_name
 from phonenumber_field.modelfields import PhoneNumberField
 from car_shop.products.models import Products
-# Create your models here.
-
-# These models are only visible for the staff.
 
 
 class TelephoneNumber(models.Model):

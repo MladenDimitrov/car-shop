@@ -8,14 +8,10 @@
     <title>Car Shop</title>
 </head>
 <body>
-<p>{{ number_of_items }}</p>
-    <p>{{ products }}</p>
-{% for product in products %}
-    <p>{{ product.product.for_car }}</p>
-    <p>{{ product.confirm_purchase_of_product }}</p>
-	<p>{{ product.product.price }}</p>
-    <a href="{% url 'delete_item' product.pk %}">Delete Item</a>
+    <p>order details</p>
+{% for item in order %}
+	<p>{{ item }}</p>
 {% endfor %}
-<a href="{% url 'make_order_page' %}">Order</a>
+
 </body>
 </html>

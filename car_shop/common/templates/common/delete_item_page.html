@@ -8,20 +8,11 @@
     <title>Car Shop</title>
 </head>
 <body>
-<p>order page</p>
+<p>{{ item }}</p>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Make Order</button>
+    {{ form }}
+    <button type="submit">Delete</button>
 </form>
-
-
-{#{% for order in form %}#}
-{#	{% for product in order.products.all %}#}
-{#		<p>{{ product.price }}</p>#}
-{#	{% endfor %}#}
-{##}
-{#{% endfor %}#}
-
 </body>
 </html>

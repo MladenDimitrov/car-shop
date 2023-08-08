@@ -1,12 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.contrib.auth import views as auth_views, login, authenticate, get_user_model
-from django.contrib.auth import mixins as auth_mixins
+from django.contrib.auth import views as auth_views
 from car_shop.account.forms import RegisterUserForm, ProfileDetails
 from django.urls import reverse_lazy
 from django.views import generic as views
-from car_shop.account.models import AppUser
-from car_shop.common.models import Person
+from car_shop.common.models import Person, Order
 
 
 class RegisterUserView(views.CreateView):
@@ -16,7 +14,7 @@ class RegisterUserView(views.CreateView):
 
 
 class LoginUserView(auth_views.LoginView):
-    template_name = 'account/login_page.html'
+    template_name = 'account/enter_the_matrix.html'
 
 
 class LogoutUserView(auth_views.LogoutView):
@@ -82,7 +80,16 @@ def profile_page(request):
     except:
         return redirect(to='edit_profile')
     else:
-        context['user_info'] = user_info
+        context['person'] = user_info
         print('else')
 
     return render(request, template_name='account/profile_page.html', context=context)
+
+
+def order_details(request):
+    user = request.user
+    orders = Order.objects.filter(customer=user)
+    context = {
+        'order': orders
+    }
+    return render(request, template_name='account/order_details_page.html', context=context)

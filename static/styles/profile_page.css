@@ -1,0 +1,66 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profile-details {
+    background-image: url("../images/pexels-dlkr-5676470.jpg");
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 25px;
+    margin: 30px;
+    width: 350px;
+}
+
+.profile-information {
+    background-color: white;
+    border-radius: 6px;
+    padding: 15px 30px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+    margin-top: 15px;
+}
+
+.profile-image {
+    border-radius: 6px;
+    width: 238px;
+    height: 250px;
+    box-shadow: 10px 10px aliceblue;
+}
+
+.profile-information-links {
+    background-color: white;
+    border-radius: 6px;
+    padding: 15px 30px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.profile-information.name:hover::before {
+    content: 'Name: ';
+}
+
+.profile-information.last-name:hover::before {
+    content: 'Last name: ';
+}
+
+.profile-information.address:hover::before {
+    content: 'Address: ';
+}
+
+.profile-information.email:hover::before {
+    content: 'Email: ';
+}
+
+.profile-information.phone-number:hover::before {
+    content: 'Phone number: ';
+}
