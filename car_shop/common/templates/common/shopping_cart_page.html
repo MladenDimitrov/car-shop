@@ -5,17 +5,31 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../../static/styles/shopping_cart.css">
     <title>Car Shop</title>
 </head>
 <body>
-<p>{{ number_of_items }}</p>
-    <p>{{ products }}</p>
-{% for product in products %}
-    <p>{{ product.product.for_car }}</p>
-    <p>{{ product.confirm_purchase_of_product }}</p>
-	<p>{{ product.product.price }}</p>
-    <a href="{% url 'delete_item' product.pk %}">Delete Item</a>
-{% endfor %}
-<a href="{% url 'make_order_page' %}">Order</a>
+{% if number_of_items %}
+    <h2>Shopping Cart: {{ number_of_items }} items</h2>
+    {% for product in products %}
+        <div class="product-info">
+            {% if product.product.image_of_the_product %}
+                <img src="{{ product.product.image_of_the_product.url }}" alt="car part" class="item-image">
+            {% else %}
+                <img src="../../../../media/default_images/default_part_image.jpg" alt="car part" class="item-image">
+            {% endif %}
+            <p>{{ product.product.get_type_of_product_display }}</p>
+            <p>{{ product.product.batch_number }}</p>
+            <p>{{ product.product.manufacturer }}</p>
+            <p>{{ product.product.specifications|linebreaks }}</p>
+            <p>{{ product.price }}лв.</p>
+            <a href="{% url 'delete_item' product.pk %}" class="delete-item"></a>
+        </div>
+    {% endfor %}
+    <p class="center-btn"><a href="{% url 'make_order_page' %}" class="make-order">Order</a></p>
+{% else %}
+    <h2>No car parts in the shopping cart</h2>
+{% endif %}
+
 </body>
 </html>

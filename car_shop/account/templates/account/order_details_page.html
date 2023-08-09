@@ -5,13 +5,41 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../../static/styles/order_profile.css">
     <title>Car Shop</title>
 </head>
 <body>
-    <p>order details</p>
-{% for item in order %}
-	<p>{{ item }}</p>
-{% endfor %}
-
+<h2>Order details</h2>
+<div class="orders">
+    {% for item in order %}
+        <div>
+            <div class="basic-info">
+                <p>Order number: {{ item.pk }}</p>
+                <p>Status: {{ item.get_status_display }}</p>
+                <p>Total price: {{ item.total_price }}лв.</p>
+                <button class="show-btn">More Info</button>
+            </div>
+            <div class="s action-hide">
+                {% for product in item.products.all %}
+                    <div class="more-info-details">
+                        {% if product.product.image_of_the_product %}
+                            <img src="{{ product.product.image_of_the_product.url }}" alt="car part image"
+                                 class="product-image">
+                        {% else %}
+                            <img src="../../../../media/default_images/default_part_image.jpg" alt="car part image"
+                                 class="product-image">
+                        {% endif %}
+                        <p class="product-info type">{{ product.product.get_type_of_product_display }}</p>
+                        <p class="product-info spec">{{ product.product.specifications|linebreaks }}</p>
+                        <p class="product-info price">Price: {{ product.product.price }}лв.</p>
+                    </div>
+                {% endfor %}
+                <button class="hide-btn">Collapse</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script src="../../../../static/scripts/edit_profile.js"></script>
+{% include 'footer.html' %}
 </body>
 </html>

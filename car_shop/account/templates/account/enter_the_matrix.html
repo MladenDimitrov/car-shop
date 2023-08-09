@@ -6,14 +6,14 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="enter">
-        <p class="title-login">Login</p>
-        <form method="post" class="enter-form">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="login-btn">Login</button>
-        </form>
-    </div>
+<div class="enter">
+    <p class="title-login">Login</p>
+    <form method="post" class="enter-form">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+</div>
 {% include 'footer.html' %}
 </body>
 </html>

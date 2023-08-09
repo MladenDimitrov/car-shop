@@ -50,6 +50,8 @@ def edit_profile(request):
                 print(check_for_personal_info)
                 form.save()
                 print(form.save)
+                return redirect(to='profile_page')
+
         else:
             print('second')
             print(check_for_personal_info)
@@ -63,7 +65,7 @@ def edit_profile(request):
                 print(check_for_personal_info)
                 form.save()
                 print(form.save)
-
+                return redirect(to='profile_page')
     context = {
         'form': form,
     }

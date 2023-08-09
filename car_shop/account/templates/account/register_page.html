@@ -9,19 +9,16 @@
     <title>Car Shop</title>
 </head>
 <body>
-<nav><a href="{% url 'home_page' %}">home page</a></nav>
-    <p>register page</p>
-
-        <div class="form">
-            <h2>Register</h2>
-            <form class='register-form'  method="post">
-                {% csrf_token %}
-
-                {{ form.as_p }}
-                <button class="submit-btn" type="submit">Create Profile</button>
-            </form>
-        </div>
-
+<div class="form">
+    <h2>Register</h2>
+    <form class='register-form' method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="submit-btn" type="submit">Create Profile</button>
+    </form>
+    <p class="have-account">If you have an account click <a href="{% url 'login_page' %}">here.</a></p>
+</div>
 {% include 'footer.html' %}
+<script src="../../../../static/scripts/delete_bug.js"></script>
 </body>
 </html>

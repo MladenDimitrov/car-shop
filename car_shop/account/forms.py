@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import forms as auth_forms, password_validation, get_user_model
 from django.utils.translation import gettext_lazy as _
 from car_shop.common.models import Person
+
 UserModel = get_user_model()
 
 
@@ -13,10 +14,9 @@ class RegisterUserForm(auth_forms.UserCreationForm):
         help_text=password_validation.password_validators_help_text_html(),
     )
     password2 = forms.CharField(
-        label=_("Password confirmation"),
+        label=_("Repeat password"),
         widget=forms.PasswordInput(attrs={"placeholder": "Repeat password"}),
         strip=False,
-        help_text=_("Enter the same password as before, for verification."),
     )
 
     class Meta(auth_forms.UserCreationForm):

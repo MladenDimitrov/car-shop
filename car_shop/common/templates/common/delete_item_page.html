@@ -5,14 +5,27 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../../static/styles/delete_item_page.css">
     <title>Car Shop</title>
 </head>
 <body>
-<p>{{ item }}</p>
-<form method="post">
+<h2>You are going to delete this item from your shopping cart.</h2>
+<h2>Are you sure?</h2>
+<div class="outside">
+    <form method="post">
     {% csrf_token %}
-    {{ form }}
-    <button type="submit">Delete</button>
+    <div class="delete-item-info">
+        {% if item.product.image_of_the_product %}
+            <img src="{{ item.product.image_of_the_product.url }}" alt="car part" class="delete-image">
+        {% else %}
+            <img src="../../../../media/default_images/default_part_image.jpg" alt="car part" class="delete-image">
+        {% endif %}
+        <p class="delete-spec">{{ item.product.get_type_of_product_display }}</p>
+        <p class="delete-spec">{{ item.product.manufacturer }}</p>
+        <p class="delete-spec">Price: {{ item.price }}лв.</p>
+        <button type="submit" class="delete-item">Delete</button>
+    </div>
 </form>
+</div>
 </body>
 </html>
