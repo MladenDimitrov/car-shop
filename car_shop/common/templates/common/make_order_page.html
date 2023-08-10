@@ -5,15 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../../static/styles/make_order.css">
     <title>Car Shop</title>
 </head>
 <body>
-<p>order page</p>
-<form method="post">
+<h2>Check out</h2>
+<div class="out-div-form">
+    <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Make Order</button>
+    <div class="form-fields">
+        {{ form.as_p }}
+        <button type="submit" class="order-make">Make Order</button>
+    </div>
 </form>
+</div>
 
 
 {#{% for order in form %}#}
@@ -22,6 +27,7 @@
 {#	{% endfor %}#}
 {##}
 {#{% endfor %}#}
-
+{% include 'footer.html' %}
+<script src="../../../../static/scripts/order_fields_hide.js"></script>
 </body>
 </html>

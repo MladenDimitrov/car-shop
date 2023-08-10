@@ -16,7 +16,7 @@
             <div class="basic-info">
                 <p>Order number: {{ item.pk }}</p>
                 <p>Status: {{ item.get_status_display }}</p>
-                <p>Total price: {{ item.total_price }}лв.</p>
+                <p>Total price: {{ item.total_price }} лв.</p>
                 <button class="show-btn">More Info</button>
             </div>
             <div class="s action-hide">
@@ -31,7 +31,7 @@
                         {% endif %}
                         <p class="product-info type">{{ product.product.get_type_of_product_display }}</p>
                         <p class="product-info spec">{{ product.product.specifications|linebreaks }}</p>
-                        <p class="product-info price">Price: {{ product.product.price }}лв.</p>
+                        <p class="product-info price">Price: {{ product.product.price }} лв.</p>
                     </div>
                 {% endfor %}
                 <button class="hide-btn">Collapse</button>

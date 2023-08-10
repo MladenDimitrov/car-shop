@@ -1,0 +1,64 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.form-container{
+    background-image: url("../images/pexels-dlkr-5676470.jpg");
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.product-information{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.product-information p{
+    margin: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+    background-color: white;
+}
+.product-image{
+    width: 200px;
+    height: 200px;
+}
+.product-manu:hover::before{
+    content: 'Manufacturer ';
+}
+.product-num:hover::before{
+    content: 'Batch number: ';
+}
+.product-details:hover::before{
+    content: 'For car: ';
+}
+.more-information:hover::before{
+    content: 'Specifications: ';
+}
+.add-item{
+    width: 190px;
+    height: 35px;
+    font-family: "Arial", serif;
+    font-weight: bold;
+    border-radius: 6px;
+}
+.add-item:hover{
+    background-color: black;
+    color: gold;
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hide-form-ul{
+    display: none;
+}

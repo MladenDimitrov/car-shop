@@ -1,6 +1,29 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
 .products-catalog{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .item{
-    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+    background-color: white;
+}
+.item p{
+    background-color: white;
+    border-radius: 6px;
+    padding: 5px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+    margin-top: 15px;
 }

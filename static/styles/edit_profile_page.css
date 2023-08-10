@@ -5,13 +5,13 @@
     flex-direction: column;
     border-radius: 6px;
     background-image: url("../images/pexels-dlkr-5676470.jpg");
-
 }
 
 .form-holder {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .title-edit {
@@ -21,25 +21,6 @@
     padding: 5px 10px;
     border-radius: 6px;
     box-shadow: 0 0 5px black, 2px 2px 5px black;
-}
-
-.enter-exit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.enter-exit a {
-    background-color: white;
-    border-radius: 6px;
-    padding: 15px 30px;
-    box-shadow: 0 0 5px black, 2px 2px 5px black;
-    margin-top: 15px;
-    margin-left: 15px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: black;
 }
 
 .update-btn {

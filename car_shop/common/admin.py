@@ -1,9 +1,7 @@
 from django.contrib import admin
 
-from car_shop.common.models import Person, ShoppingCart, Order
+from car_shop.common.models import Person, ShoppingCart, Order, TelephoneNumber, AddressModel, EmailModel, WorkingHoursModel
 
-
-# Register your models here.
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
@@ -17,4 +15,24 @@ class ShoppingCartAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(TelephoneNumber)
+class TelephoneNumberAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AddressModel)
+class AddressModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(EmailModel)
+class EmailModelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(WorkingHoursModel)
+class WorkingHoursModelAdmin(admin.ModelAdmin):
     pass

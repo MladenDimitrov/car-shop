@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from car_shop.common.models import Person, ShoppingCart, Order
+from car_shop.common.models import ShoppingCart, TelephoneNumber, EmailModel, WorkingHoursModel, AddressModel
 from car_shop.common.forms import MakeOrder, ShowItems
 from django.contrib.auth.decorators import login_required
 
@@ -15,7 +15,18 @@ def home_page(request):
 
 
 def contacts(request):
-    return render(request, template_name='common/contacts_page.html')
+    address = AddressModel.objects.get()
+    work = WorkingHoursModel.objects.all()
+    email = EmailModel.objects.all()
+    phone = TelephoneNumber.objects.all()
+
+    context = {
+        'address': address,
+        'work': work,
+        'email': email,
+        'phone': phone
+    }
+    return render(request, template_name='common/contacts_page.html', context=context)
 
 
 @login_required
@@ -62,7 +73,7 @@ def order(request):
                 item.confirm_purchase_of_product = not item.confirm_purchase_of_product
                 item.save()
             form.save()
-
+            return redirect(to='details_for_orders')
     context = {
         'form': form
     }

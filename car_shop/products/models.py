@@ -44,10 +44,3 @@ class Products(models.Model):
     category_of_product = models.CharField(choices=CATEGORY_OF_PRODUCT)
     type_of_product = models.CharField(choices=TYPE_OF_PRODUCT)
     price = models.IntegerField()
-
-
-class TestModel(models.Model):
-    name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    age = models.IntegerField()
-

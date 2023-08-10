@@ -1,3 +1,19 @@
 .navigation{
-    border: black 3px solid;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: #414141;
+}
+.nav-link{
+    font-family: "Arial", serif;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+.nav-link:hover{
+    color: gold;
+    background-color: black;
+    border-radius: 6px;
 }

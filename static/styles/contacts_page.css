@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.all-con-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 300px;
+}
+
+.address {
+    margin: 15px 15px 5px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+}
+
+.phone {
+    margin: 15px 15px 5px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+}
+
+.work {
+    margin: 15px 15px 5px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+}
+
+.email-con {
+    margin: 15px 15px 5px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+}
+
+.con-info {
+    margin: 15px 15px 5px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px black, 2px 2px 5px black;
+}

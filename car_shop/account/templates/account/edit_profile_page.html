@@ -10,19 +10,14 @@
     <title>Car Shop</title>
 </head>
 <body>
-<p>you are in edit profile page</p>
-{{ request.user }}
 <div class="form-holder">
+    <h2>Edit Profile</h2>
     <form enctype="multipart/form-data" method="post" class="edit-form">
         <p class="title-edit">Current profile information</p>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="update-btn">Update Profile Info</button>
     </form>
-</div>
-<div class="enter-exit">
-    <a href="{% url 'login_page' %}">Login</a>
-    <a href="{% url 'logout_page' %}">Logout</a>
 </div>
 {% include 'footer.html' %}
 <script src="../../../../static/scripts/hide_user.js"></script>

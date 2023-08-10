@@ -5,9 +5,35 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../../static/styles/contacts_page.css">
     <title>Car Shop</title>
 </head>
 <body>
-    <p>contacts</p>
+<h2>Контакти</h2>
+<div class="all-con-info">
+    <div class="address">
+        <h3 class="title-con">Адрес</h3>
+        <p class="con-info">{{ address.address }}</p>
+    </div>
+    <div class="phone">
+        <h3 class="title-con">Телефон</h3>
+        {% for item in phone %}
+            <p class="con-info">{{ item.description }}: {{ item.phone_number }}</p>
+        {% endfor %}
+    </div>
+    <div class="work">
+        <h3 class="title-con">Работно време</h3>
+        {% for item in work %}
+            <p class="con-info">{{ item.working_days }}</p>
+            <p class="con-info">{{ item.days_off }}</p>
+        {% endfor %}
+    </div>
+    <div class="email-con">
+        <h3 class="title-con">E-Mail</h3>
+        {% for item in email %}
+            <p class="con-info">{{ item.description }}: {{ item.email }}</p>
+        {% endfor %}
+    </div>
+</div>
 </body>
 </html>

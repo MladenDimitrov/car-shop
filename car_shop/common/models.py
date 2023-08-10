@@ -7,7 +7,7 @@ from car_shop.products.models import Products
 
 
 class TelephoneNumber(models.Model):
-    telephone_number = models.IntegerField()
+    phone_number = PhoneNumberField(max_length=13, region='BG')
     # Description is optional, only for the staff to know more about the number.
     # It can be used in the template if needed.
     description = models.CharField(max_length=20, blank=True, null=True)

@@ -1,18 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 from car_shop.products.models import Products
-from car_shop.products.forms import AddProduct, TestForm
-# Create your views here.
+from car_shop.products.forms import AddProduct
 
 
-@login_required
-def show_products(request):
-    product = Products.objects.all()
-    context = {
-        'product': product,
-        'drivetrain': 1000
-    }
-    return render(request, template_name='products_page/catalog.html', context=context)
+class ShowProducts(LoginRequiredMixin, generic.ListView):
+    template_name = 'products_page/catalog.html'
+    model = Products
 
 
 @login_required
@@ -33,16 +29,3 @@ def product_details(request, **kwargs):
         'form': form
     }
     return render(request, template_name='products_page/product_details_page.html', context=context)
-
-
-def test_page(request):
-    form = TestForm()
-    if request.method == 'POST':
-        form = TestForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-    context = {
-        'form': form
-    }
-    return render(request, template_name='products_page/test_page.html', context=context)

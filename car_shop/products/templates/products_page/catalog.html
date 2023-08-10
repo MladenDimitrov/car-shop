@@ -11,7 +11,7 @@
 <body>
     <h1>Catalog</h1>
     <div class="products-catalog">
-        {% for part in product %}
+        {% for part in object_list %}
         <div class="item">
         {% if part.image_of_the_product %}
             <a href="{% url 'product_details' part.pk %}">
@@ -22,13 +22,13 @@
             <img src="../../../../media/default_images/default_part_image.jpg" height="150px" width="150px" alt="no image">
             </a>
         {% endif %}
-        <p>{{ part.for_car }}</p>
-        <p>{{ part.manufacturer }}</p>
-        <p>{{ part.price }} лв.</p>
-        <p>{{ part.specifications }}</p>
+            <p>{{ part.get_type_of_product_display }}</p>
+            <p>Batch №: {{ part.batch_number }}</p>
+        <p>Manufacturer: {{ part.manufacturer }}</p>
+        <p>Price: {{ part.price }} лв.</p>
         </div>
     {% endfor %}
     </div>
-
+{% include 'footer.html' %}
 </body>
 </html>
