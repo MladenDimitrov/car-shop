@@ -1,12 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from car_shop.products.models import Products
 from car_shop.products.forms import AddProduct
 
 
-class ShowProducts(LoginRequiredMixin, generic.ListView):
+class ShowProducts(generic.ListView):
     template_name = 'products_page/catalog.html'
     model = Products
 
@@ -23,7 +22,7 @@ def product_details(request, **kwargs):
         form = AddProduct(request.POST)
         if form.is_valid():
             form.save()
-
+            return redirect('products_page')
     context = {
         'product_details': more_info,
         'form': form

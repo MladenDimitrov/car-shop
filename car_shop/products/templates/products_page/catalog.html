@@ -9,26 +9,39 @@
     <title>Car Shop</title>
 </head>
 <body>
-    <h1>Catalog</h1>
-    <div class="products-catalog">
-        {% for part in object_list %}
+<nav class="navigation">
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'profile_page' %}" class="nav-link">Profile</a>
+        <a href="{% url 'products_page' %}" class="nav-link">Products</a>
+        <a href="{% url 'shopping_cart_page' %}" class="nav-link">Shopping Cart</a>
+        <a href="{% url 'contacts_page' %}" class="nav-link">Contacts</a>
+    {% else %}
+        <a href="{% url 'register_page' %}" class="nav-link">Register Page</a>
+        <a href="{% url 'products_page' %}" class="nav-link">Products</a>
+        <a href="{% url 'login_page' %}" class="nav-link">Login</a>
+    {% endif %}
+</nav>
+<h1>Catalog</h1>
+<div class="products-catalog">
+    {% for part in object_list %}
         <div class="item">
-        {% if part.image_of_the_product %}
-            <a href="{% url 'product_details' part.pk %}">
-        	<img src="{{ part.image_of_the_product.url }}"  height="150px" width="150px" alt="car part">
-            </a>
+            {% if part.image_of_the_product %}
+                <a href="{% url 'product_details' part.pk %}">
+                    <img src="{{ part.image_of_the_product.url }}" height="150px" width="150px" alt="car part">
+                </a>
             {% else %}
-            <a href="{% url 'product_details' part.pk %}">
-            <img src="../../../../media/default_images/default_part_image.jpg" height="150px" width="150px" alt="no image">
-            </a>
-        {% endif %}
+                <a href="{% url 'product_details' part.pk %}">
+                    <img src="../../../../media/default_images/default_part_image.jpg" height="150px" width="150px"
+                         alt="default car part image">
+                </a>
+            {% endif %}
             <p>{{ part.get_type_of_product_display }}</p>
+            <p>Manufacturer: {{ part.manufacturer }}</p>
             <p>Batch №: {{ part.batch_number }}</p>
-        <p>Manufacturer: {{ part.manufacturer }}</p>
-        <p>Price: {{ part.price }} лв.</p>
+            <p>Price: {{ part.price }} лв.</p>
         </div>
     {% endfor %}
-    </div>
+</div>
 {% include 'footer.html' %}
 </body>
 </html>

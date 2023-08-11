@@ -13,19 +13,19 @@
 <h2>Are you sure?</h2>
 <div class="outside">
     <form method="post">
-    {% csrf_token %}
-    <div class="delete-item-info">
-        {% if item.product.image_of_the_product %}
-            <img src="{{ item.product.image_of_the_product.url }}" alt="car part" class="delete-image">
-        {% else %}
-            <img src="../../../../media/default_images/default_part_image.jpg" alt="car part" class="delete-image">
-        {% endif %}
-        <p class="delete-spec">{{ item.product.get_type_of_product_display }}</p>
-        <p class="delete-spec">{{ item.product.manufacturer }}</p>
-        <p class="delete-spec">Price: {{ item.price }}лв.</p>
-        <button type="submit" class="delete-item">Delete</button>
-    </div>
-</form>
+        {% csrf_token %}
+        <div class="delete-item-info">
+            {% if item.product.image_of_the_product %}
+                <img src="{{ item.product.image_of_the_product.url }}" alt="car part" class="delete-image">
+            {% else %}
+                <img src="../../../../media/default_images/default_part_image.jpg" alt="car part" class="delete-image">
+            {% endif %}
+            <p class="delete-spec">{{ item.product.get_type_of_product_display }}</p>
+            <p class="delete-spec">{{ item.product.manufacturer }}</p>
+            <p class="delete-spec">Price: {{ item.price }}лв.</p>
+            <button type="submit" class="delete-item">Delete</button>
+        </div>
+    </form>
 </div>
 {% include 'footer.html' %}
 </body>

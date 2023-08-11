@@ -3,6 +3,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    font-family: "Arial", serif;
 }
 .form-container{
     background-image: url("../images/pexels-dlkr-5676470.jpg");

@@ -31,7 +31,7 @@ class Products(models.Model):
         (ENGINE_CAM_SHAFT_PULLEY, 'Engine cam shaft pulley')
     ]
 
-    image_of_the_product = models.ImageField(upload_to='product_images')
+    image_of_the_product = models.ImageField(upload_to='product_images', blank=True, null=True)
     for_car = models.CharField(max_length=50)
     engine = models.CharField(max_length=30)
     batch_number = models.CharField(max_length=30)

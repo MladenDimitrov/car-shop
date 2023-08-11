@@ -9,6 +9,19 @@
     <title>Car Shop</title>
 </head>
 <body>
+<nav class="navigation">
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'profile_page' %}" class="nav-link">Profile</a>
+        <a href="{% url 'products_page' %}" class="nav-link">Products</a>
+        <a href="{% url 'shopping_cart_page' %}" class="nav-link">Shopping Cart</a>
+        <a href="{% url 'contacts_page' %}" class="nav-link">Contacts</a>
+        <a href="{% url 'logout_page' %}" class="nav-link">Logout</a>
+    {% else %}
+        <a href="{% url 'register_page' %}" class="nav-link">Register Page</a>
+        <a href="{% url 'products_page' %}" class="nav-link">Products</a>
+        <a href="{% url 'login_page' %}" class="nav-link">Login</a>
+    {% endif %}
+</nav>
 <h2>Order details</h2>
 <div class="orders">
     {% for item in order %}

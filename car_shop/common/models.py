@@ -1,5 +1,5 @@
-from django.core.validators import MinLengthValidator
 from django.db import models
+from django.core.validators import MinLengthValidator
 from django.contrib.auth import get_user_model
 from car_shop.account.validators import check_name
 from phonenumber_field.modelfields import PhoneNumberField
@@ -42,7 +42,6 @@ UserModel = get_user_model()
 
 
 class Person(models.Model):
-
     name = models.CharField(max_length=20, blank=True, null=True, validators=[check_name, MinLengthValidator(2)])
     last_name = models.CharField(max_length=50, blank=True, null=True, validators=[check_name, MinLengthValidator(1)])
     email = models.EmailField(max_length=40, blank=True, null=True)

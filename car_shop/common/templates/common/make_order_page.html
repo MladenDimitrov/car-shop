@@ -12,21 +12,13 @@
 <h2>Check out</h2>
 <div class="out-div-form">
     <form method="post">
-    {% csrf_token %}
-    <div class="form-fields">
-        {{ form.as_p }}
-        <button type="submit" class="order-make">Make Order</button>
-    </div>
-</form>
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form.as_p }}
+            <button type="submit" class="order-make">Make Order</button>
+        </div>
+    </form>
 </div>
-
-
-{#{% for order in form %}#}
-{#	{% for product in order.products.all %}#}
-{#		<p>{{ product.price }}</p>#}
-{#	{% endfor %}#}
-{##}
-{#{% endfor %}#}
 {% include 'footer.html' %}
 <script src="../../../../static/scripts/order_fields_hide.js"></script>
 </body>

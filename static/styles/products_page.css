@@ -1,15 +1,42 @@
-body{
+body {
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    font-family: "Arial", serif;
 }
-.products-catalog{
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: #414141;
+    width: 100%;
+}
+
+.nav-link {
+    font-family: "Arial", serif;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-link:hover {
+    color: gold;
+    background-color: black;
+    border-radius: 6px;
+}
+
+.products-catalog {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
-.item{
+
+.item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,7 +47,8 @@ body{
     box-shadow: 0 0 5px black, 2px 2px 5px black;
     background-color: white;
 }
-.item p{
+
+.item p {
     background-color: white;
     border-radius: 6px;
     padding: 5px;

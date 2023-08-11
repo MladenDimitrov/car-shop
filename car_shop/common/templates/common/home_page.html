@@ -15,18 +15,23 @@
         <a href="{% url 'products_page' %}" class="nav-link">Products</a>
         <a href="{% url 'shopping_cart_page' %}" class="nav-link">Shopping Cart</a>
         <a href="{% url 'contacts_page' %}" class="nav-link">Contacts</a>
+        <a href="{% url 'logout_page' %}" class="nav-link">Logout</a>
     {% else %}
         <a href="{% url 'register_page' %}" class="nav-link">Register Page</a>
+        <a href="{% url 'products_page' %}" class="nav-link">Products</a>
         <a href="{% url 'login_page' %}" class="nav-link">Login</a>
     {% endif %}
 </nav>
-<p>hello</p>
-<a href="{% url 'register_page' %}">register page</a>
-{#{{ name.profile_photo }}#}
-
-{#<img src="{{ name.profile_photo.url }}" alt="" width="300px" height="300px">#}
-{#<p>{{name.user}}</p>#}
-<p>{{ request.user }}</p>
-<a href="{% url 'logout_page' %}">Logout</a>
+<div class="holder-div">
+    <div class="holder-info">
+        {% if request.user.is_authenticated %}
+            <h2>Welcome back {{ request.user }} to the best shop!</h2>
+        {% else %}
+            <h2>Welcome to CAR SHOP the best online shop for car parts!</h2>
+        {% endif %}
+        <img src="../../../../static/images/logo.png" alt="logo">
+    </div>
+</div>
+{% include 'footer.html' %}
 </body>
 </html>
